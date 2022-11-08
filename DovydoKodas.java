@@ -1,9 +1,14 @@
+/**
+ * @param pageData is the page data variable.
+ * @param includeSuiteSetup is flag variable.
+ */
 public static String testableHtml(PageData pageData, boolean includeSuiteSetup)
 throws Exception {
 
     WikiPage wikiPage = pageData.getWikiPage();
     StringBuffer buffer = new StringBuffer();
     
+    // If test page
     if (pageData.hasAttribute("Test")) {
 
         if (includeSuiteSetup) {
@@ -20,6 +25,7 @@ throws Exception {
             }
         }
 
+            // Init crawler
         WikiPage setup = 
         PageCrawlerImpl.getInheritedPage("SetUp", wikiPage);
         if (setup != null) {
@@ -33,7 +39,8 @@ throws Exception {
     }
 
     buffer.append(pageData.getContent());
-
+    
+    // If test page
     if (pageData.hasAttribute("Test")) {
         WikiPage teardown = 
         PageCrawlerImpl.getInheritedPage("TearDown", wikiPage);
@@ -47,7 +54,7 @@ throws Exception {
             .append("\n");
         }
         if (includeSuiteSetup) {
-
+            // Init crawler
             WikiPage suiteTeardown =
             PageCrawlerImpl.getInheritedPage(
             SuiteResponder.SUITE_TEARDOWN_NAME,
