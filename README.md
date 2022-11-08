@@ -1,2 +1,2 @@
-# Program-Sistem-Kokyb-3Lab
-Programų Sistemų Kokybė. 3 Laboratorinis darbas
+# Programų Sistemų Kokybė. 3 Laboratorinis darbas
+Repozitorijoje įkelti komandos narių blogo kodo pavyzdžiai.
