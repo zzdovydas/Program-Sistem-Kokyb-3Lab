@@ -1,0 +1,65 @@
+package az.alizeynalli.cleancode.functions
+
+public class Functions {
+  public void saveCashFlow(Income income, Expense expense){
+    incomeReposiroty.save(income);
+    expenseRepository.save(expense);
+  }
+   public void saveIncome(Income income){
+    incomeReposiroty.save(income);
+  }
+   public void saveExpense(Expense expense){
+    expenseRepository.save(expense);
+  }
+  
+  @PostMapping("/user")
+  public User saveUser(User user){
+    return userRepository.save(user);
+  }
+    @PostMapping("/user")
+  public User saveUser(User user){
+    return userService.save(user);
+  }
+  // method in UsersService
+  public User save(User user){
+    return userRepository.save(user);
+  }
+  
+  public void bulkUpdateUser(List<User> users){
+    // get Users from repository
+    // update all Users one by one
+    // save Users List in repository
+  };
+
+  public void save(){};
+  public void saveUser(String userName, User user, Date date){};
+  public void saveUser(String userName, User user, Date date, boolean isAdmin){};
+
+
+  public User saveUser(User user){
+
+    if(user.isAdmin){
+      user.setRole(user);
+    }
+    return userRepository.save(user);
+  }
+  public Environment getEnvironment(){
+    String version = versionService.getVersion();
+    return environmentService.getEnvironment(version);
+  }
+  public Release getRelease(){
+    String version = versionService.getVersion();
+    return releaseService.getRelease(version);
+  }
+  public Environment getEnvironment(){
+    return environmentService.getEnvironment(getVersion());
+  }
+  public Release getRelease(){
+    return releaseService.getRelease(getVersion());
+  }
+  private String getVersion(){ // so changes in versionService will be done one time instead of changing two methods
+    return versionService.getVersion();
+  }
+  List<Privilege> privileges = getGroup().getUser().getRole().getPrivileges();
+  
+}
